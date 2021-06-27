@@ -1,5 +1,6 @@
 import axios from "axios";
 import registrationActions from "./userActions";
+import notesActions from "../notes/notesActions";
 
 axios.defaults.baseURL = "http://localhost:3003/api/";
 
@@ -62,6 +63,7 @@ const getCurrentUser = () => (dispatch, getState) => {
     .get("/users/current")
     .then((response) => {
       dispatch(registrationActions.getCurretUserSuccess(response.data));
+      dispatch(notesActions.currentNotes(response.data.notes));
     })
     .catch((error) => dispatch(registrationActions.getCurretUserError(error)));
 };

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import { useDispatch, useSelector } from "react-redux";
-import { items } from "./redux/users/userSelector";
 import notesOperation from "./redux/notes/notesOperation";
+import { items } from "./redux/notes/notesSelector";
 import NoteCard from "./components/NoteCard";
 import Container from "@material-ui/core/Container";
 import Layout from "./components/Layout";
@@ -14,7 +14,7 @@ const Notes = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(userOperations.getCurrentUser());
-  }, [notes, dispatch]);
+  }, [dispatch]);
 
   const handleDelete = (id) => {
     dispatch(notesOperation.deleteNote(id));

@@ -24,9 +24,9 @@ const deleteNote = (id) => (dispatch) => {
     .catch((err) => dispatch(notesActions.deleteNoteError(err)));
 };
 
-const postOperations = {
+const notesOperations = {
   addNote,
   deleteNote,
 };
 
-export default postOperations;
+export default notesOperations;
