@@ -15,6 +15,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { format } from "date-fns";
 import userOperations from "../redux/users/userOperations";
 import { useDispatch } from "react-redux";
+import Clock from "./Clock";
 
 const drawerWidth = 240;
 
@@ -48,6 +49,10 @@ const useStyles = makeStyles((theme) => {
     toolbar: theme.mixins.toolbar,
     date: {
       flexGrow: 1,
+      fontSize: 20,
+    },
+    btn: {
+      fontSize: 20,
     },
   };
 });
@@ -77,12 +82,15 @@ const Layout = ({ children }) => {
       <AppBar className={classes.appbar} elevation={0}>
         <Toolbar>
           <Typography className={classes.date}>
+            <Clock className={classes.clock} />
+            <br />
             {format(new Date(), "do MMMM Y ")}
           </Typography>
           <Button
             color="inherit"
             endIcon={<ExitToAppIcon />}
             onClick={onLogout}
+            className={classes.btn}
           >
             Logout
           </Button>
